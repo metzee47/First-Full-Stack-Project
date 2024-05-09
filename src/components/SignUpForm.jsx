@@ -1,6 +1,6 @@
-import { Header } from "../Header";
+import { Header } from "./Header";
 import { FaLock, FaUser,FaPhoneAlt } from "react-icons/fa";
-
+import './LoginSignUp.css'
 
 
 export function SignUpForm({handleLogin, name, prename, tel, password, passwordConfirm,
