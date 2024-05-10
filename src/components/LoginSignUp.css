@@ -65,7 +65,8 @@ form
 }
 
 .password-section input,
-.login-section input{
+.login-section input,
+select{
     border-radius: 25px;
     height: 40px;
     backdrop-filter: drop-shadow(10px);
@@ -87,7 +88,8 @@ input::placeholder{
 }
 
 .password-section input:focus,
-.login-section input:focus{
+.login-section input:focus,
+select:focus{
     background-color: #06706a;
     color: aliceblue;
 }
@@ -159,7 +161,8 @@ form button:hover{
     }
 
     .password-section input,
-    .login-section input{
+    .login-section input,
+    select{
         height: 33px;
         font-size: 13px;
         padding: 2px 50px;
@@ -205,7 +208,8 @@ form button:hover{
     }
 
     .password-section input,
-    .login-section input{
+    .login-section input,
+    select{
         height: 35px;
         font-size: 15px;
         padding: 2px 55px;
@@ -232,7 +236,8 @@ form button:hover{
     }
 
     .password-section input,
-    .login-section input{
+    .login-section input,
+    select{
         height: 48px;
         font-size: 17px;
         padding: 2px 75px;
@@ -241,26 +246,26 @@ form button:hover{
         margin-bottom: 20px;
         }
 
-        .password-section .icon,
-        .login-section .icon{
-            top: 47%;
-        }
+    .password-section .icon,
+    .login-section .icon{
+        top: 47%;
+    }
 
-        .password-section input::placeholder,
-        .login-section input::placeholder{
-            font-size: 14px;
-        }
+    .password-section input::placeholder,
+    .login-section input::placeholder{
+        font-size: 14px;
+    }
 
-        .password-section label,
-        .login-section label{
-            font-size: 18px;
-        }
+    .password-section label,
+    .login-section label{
+        font-size: 18px;
+    }
 
-        form button{
-            width: 135px;
-            height: 35px;
-            font-size: 15px;
-        }
+    form button{
+        width: 135px;
+        height: 35px;
+        font-size: 15px;
+    }
 
 }
 
@@ -278,7 +283,8 @@ form button:hover{
     }
 
     .password-section input,
-    .login-section input{
+    .login-section input,
+    select{
         height: 45px;
         font-size: 18px;
         padding: 2px 85px;
@@ -287,25 +293,25 @@ form button:hover{
         margin-bottom: 20px;
         }
 
-        .password-section .icon,
-        .login-section .icon{
-            top: 48%;
-        }
+    .password-section .icon,
+    .login-section .icon{
+        top: 48%;
+    }
 
-        .password-section input::placeholder,
-        .login-section input::placeholder{
-            font-size: 16px;
-        }
+    .password-section input::placeholder,
+    .login-section input::placeholder{
+        font-size: 16px;
+    }
 
-        .password-section label,
-        .login-section label{
-            font-size: 20px;
-        }
+    .password-section label,
+    .login-section label{
+        font-size: 20px;
+    }
 
-        form button{
-            width: 150px;
-            height: 38px;
-            font-size: 16px;
-        }
+    form button{
+        width: 150px;
+        height: 38px;
+        font-size: 16px;
+    }
 
 }

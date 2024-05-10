@@ -1,32 +1,48 @@
 import { FaLock, FaUser } from "react-icons/fa";
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import './LoginSignUp.css'
 import { Header } from "./Header";
+import axios from "axios";
 
 
-export function LoginForm({handleSignUp, login, password, setName, setPassword}){
+export function LoginForm(){
 
-    
+    // login identifiant
+    const [inputValues, setInputValues] = useState({
+        email: '',
+        password: ''
+    })
+
+    const navigate = useNavigate()
 
 
     const handleSubmit = (e)=>{
         e.preventDefault()
+
+        axios.post('http://localhost:8080/', inputValues)
+        .then(res => {
+            alert('vous etes connecte')
+            return res})
+        .catch(err => console.log(err))
+
+
     }
 
 
     return <main>
         <Header title='Se connecter'/>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method="post">
             <div className="login-section">
-                <label htmlFor="login">Nom d'utilisateur</label>
+                <label htmlFor="email">Login</label>
                 <input 
-                    id="login"
+                    id="email"
                     className='login-input'
-                    type='text'
-                    placeholder='Saisir votre nom'
-                    value={login}
-                    onChange={(e)=> setName(e.target.value)}
+                    type='email'
+                    placeholder='Saisir votre @mail'
+                    value={inputValues.email}
+                    onChange={(e)=> setInputValues(inputValues =>({...inputValues, [e.target.id]: e.target.value}))}
                     required
                     />
                     <FaUser className="icon"/>
@@ -35,25 +51,28 @@ export function LoginForm({handleSignUp, login, password, setName, setPassword})
             <div className="password-section">
                 <label htmlFor="password">Mot de passe</label>
                 <input 
+                    id="password"
                     className='password-input'
                     type='password'
                     placeholder='Saisir votre mot de passe'
-                    value={password}
-                    onChange={(e)=> setPassword(e.target.value)}
+                    value={inputValues.password}
+                    onChange={(e)=> setInputValues(inputValues =>({...inputValues, [e.target.id]: e.target.value}))}
                     required
                     />
                     <FaLock className="icon"/>
             </div>
 
             <div className="log-button">
-                <button type="button">Me connecter</button>
+                <button type="submit">Me connecter</button>
                 <a href="">Mot de passe oublié ?</a>
             </div>
 
             <div className="sign-up-button">
-                <a onClick={handleSignUp}>Je n'ai pas de compte</a>
-                <button type="button" onClick={handleSignUp}>M'inscrire</button>
+                <a onClick={()=>navigate('/sign-up')}>Je n'ai pas de compte</a>
+                <button type="button" onClick={()=>navigate('/sign-up')}>M'inscrire</button>
             </div>
-    </form>
+        </form>  
+        
+    
     </main>
 }
