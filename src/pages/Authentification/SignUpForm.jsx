@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import  axios  from 'axios'
 import { Header } from "./Header";
 import { FaLock, FaUser,FaPhoneAlt } from "react-icons/fa";
-import { FaUserGear } from "react-icons/fa6";
+//import { FaUserGear } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import './LoginSignUp.css'
 

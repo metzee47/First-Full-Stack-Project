@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 
 a{
     text-decoration: none;
@@ -110,10 +110,10 @@ select:focus{
 }
 
 form button{
-    width: 120px;
+    width: 115px;
     border: none;
     background-color: #06706a;
-    height: 33px;
+    height: 35px;
     padding: 10px;
     border-radius: 20px;
     font-size: 14px;
@@ -210,7 +210,7 @@ form button:hover{
     .password-section input,
     .login-section input,
     select{
-        height: 35px;
+        height: 30px;
         font-size: 15px;
         padding: 2px 55px;
     }
@@ -224,7 +224,7 @@ form button:hover{
 
 @media screen and (min-width:730px) and (max-width:1024px) {
     main{
-        min-width: 600px;
+        min-width: 550px;
     }
 
     main .login-title{
@@ -238,7 +238,7 @@ form button:hover{
     .password-section input,
     .login-section input,
     select{
-        height: 48px;
+        height: 40px;
         font-size: 17px;
         padding: 2px 75px;
         border-radius: 24px;
@@ -258,20 +258,14 @@ form button:hover{
 
     .password-section label,
     .login-section label{
-        font-size: 18px;
-    }
-
-    form button{
-        width: 135px;
-        height: 35px;
-        font-size: 15px;
+        font-size: 16px;
     }
 
 }
 
 @media screen and (min-width:1025px) {
     main{
-        min-width: 700px;
+        min-width: 600px;
     }
 
     main .login-title{
@@ -285,8 +279,8 @@ form button:hover{
     .password-section input,
     .login-section input,
     select{
-        height: 45px;
-        font-size: 18px;
+        height: 40px;
+        font-size: 16px;
         padding: 2px 85px;
         border-radius: 30px;
         margin-top: 10px;
@@ -300,18 +294,12 @@ form button:hover{
 
     .password-section input::placeholder,
     .login-section input::placeholder{
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .password-section label,
     .login-section label{
-        font-size: 20px;
-    }
-
-    form button{
-        width: 150px;
-        height: 38px;
-        font-size: 16px;
+        font-size: 18px;
     }
 
 }

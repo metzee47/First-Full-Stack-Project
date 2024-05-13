@@ -7,7 +7,7 @@ import { Header } from "./Header";
 import axios from "axios";
 
 
-export function LoginForm(){
+export function LoginForm({setLogin}){
 
     // login identifiant
     const [inputValues, setInputValues] = useState({
@@ -23,8 +23,10 @@ export function LoginForm(){
 
         axios.post('http://localhost:8080/', inputValues)
         .then(res => {
-            alert('vous etes connecte')
-            return res})
+            setLogin(true)
+            navigate('/superadmin')
+            return res
+        })
         .catch(err => console.log(err))
 
 
