@@ -65,8 +65,7 @@ form
 }
 
 .password-section input,
-.login-section input,
-select{
+.login-section input{
     border-radius: 25px;
     height: 40px;
     backdrop-filter: drop-shadow(10px);
@@ -88,8 +87,7 @@ input::placeholder{
 }
 
 .password-section input:focus,
-.login-section input:focus,
-select:focus{
+.login-section input:focus{
     background-color: #06706a;
     color: aliceblue;
 }
@@ -109,7 +107,8 @@ select:focus{
     align-items: center;
 }
 
-form button{
+.log-button button,
+.sign-up-button button{
     width: 115px;
     border: none;
     background-color: #06706a;
@@ -122,7 +121,8 @@ form button{
     transition: all.3s;
 }
 
-form button:hover{
+.log-button button:hover,
+.sign-up-button button:hover{
     transform: scale(0.98);
     background-color: #0E5955;
 }
@@ -161,8 +161,7 @@ form button:hover{
     }
 
     .password-section input,
-    .login-section input,
-    select{
+    .login-section input{
         height: 33px;
         font-size: 13px;
         padding: 2px 50px;
@@ -174,7 +173,9 @@ form button:hover{
         
     }
 
-    form button{
+    .log-button button
+    .sign-up-button button{
+
         width: 100px;
         height: 33px;
         font-size: 13px;
@@ -208,8 +209,7 @@ form button:hover{
     }
 
     .password-section input,
-    .login-section input,
-    select{
+    .login-section input{
         height: 30px;
         font-size: 15px;
         padding: 2px 55px;
@@ -236,8 +236,7 @@ form button:hover{
     }
 
     .password-section input,
-    .login-section input,
-    select{
+    .login-section input{
         height: 40px;
         font-size: 17px;
         padding: 2px 75px;
@@ -277,8 +276,7 @@ form button:hover{
     }
 
     .password-section input,
-    .login-section input,
-    select{
+    .login-section input{
         height: 40px;
         font-size: 16px;
         padding: 2px 85px;

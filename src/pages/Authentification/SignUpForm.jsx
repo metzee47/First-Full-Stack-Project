@@ -56,14 +56,6 @@ export function SignUpForm(){
 
         */
 
-        const emptyChamp = 
-        inputValues.name !== '' && 
-        inputValues.prename !== '' && 
-        inputValues.email !== '' &&
-        inputValues.tel !== '' &&
-        inputValues.password !== '' &&
-        passwordConfirm !== '' &&
-        inputValues.userType !== '' 
         // rightUserTypePassword()
         
         const passwordMatching = inputValues.password === passwordConfirm
@@ -71,7 +63,7 @@ export function SignUpForm(){
         if(!passwordMatching) alert('Passwords dont matching')
         // if(!rightUserTypePassword) alert ('Mot de passe admin ou super admin incorrect')
 
-        return (emptyChamp && passwordMatching)
+        return passwordMatching
         
     }   
 

@@ -2,6 +2,7 @@
 
 .sidebar{
     font-family: 'Inter-Tight';
+    background-color: rgba(255, 255, 255, 0.842);
     width: 85px;
     display: flex;
     flex-direction: column;
@@ -43,6 +44,10 @@
 }
 
 .icon-tag:hover{
+    background-color: #06706a;
+}
+
+.icon-tag:focus{
     background-color: #06706a;
 }
 

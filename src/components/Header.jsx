@@ -1,5 +1,7 @@
 import logo from '../assets/logo.png'
 import { IoSearchOutline } from "react-icons/io5";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import { IoMdNotifications } from "react-icons/io";
 import './header.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +19,10 @@ export function Header(){
             <input type="text" className='search-input'placeholder='Search...'/>
             <IoSearchOutline className='icon'/>
         </div>
-        <button className="disconnect-button" onClick={()=> navigate('/')}>Log out</button>
+        <div className="header-buttons">
+            <button className="notif-button button" onClick={()=> null}><IoMdNotifications/><span>0</span></button>
+            <button className="disconnect-button button" onClick={()=> navigate('/')}><RiLogoutCircleRLine/></button>
+        </div>
         
     </div>
 }
