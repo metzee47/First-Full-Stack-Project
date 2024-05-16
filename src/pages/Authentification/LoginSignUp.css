@@ -41,13 +41,13 @@ main .login-title{
     font-size: 17px;
 }
 
-form{
+.form{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-form 
+.form 
 .password-section,
 .login-section{
     width: 100%;

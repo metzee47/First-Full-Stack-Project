@@ -35,7 +35,7 @@ export function LoginForm({setLogin}){
 
     return <main>
         <Header title='Se connecter'/>
-        <form onSubmit={handleSubmit} method="post">
+        <form onSubmit={handleSubmit} method="post" className="form">
             <div className="login-section">
                 <label htmlFor="email">Login</label>
                 <input 

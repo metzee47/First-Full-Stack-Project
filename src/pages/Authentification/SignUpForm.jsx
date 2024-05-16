@@ -85,7 +85,7 @@ export function SignUpForm(){
     
     return <main>
         <Header title="S'inscrire"/>
-        <form method="POST" onSubmit={handleSubmit}>
+        <form method="POST" onSubmit={handleSubmit} className="form">
             <div className="login-section">
                 <label htmlFor="nom">Nom</label>
                 <input 

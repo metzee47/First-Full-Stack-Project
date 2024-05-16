@@ -4,13 +4,14 @@
 .container{
     z-index: -100;
     font-family: 'Inter-Tight';
-    padding: 70px 0 20px 95px;
+    padding: 60px 0 20px 95px;
 }
 
 td{
     padding: 10px 14px;
     text-align:  center;
     font-size: 14px;
+    margin-right: 15px;
 }
 
 table{
@@ -42,6 +43,14 @@ tbody tr:hover .icon{
     opacity: 1;
 }
 
+tbody .icon-button{
+    width: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+}
+
 tbody .icon{
     opacity: 0;
     font-size: 20px;
@@ -55,11 +64,11 @@ tbody .icon:hover{
 }
 
 tbody .delete-icon{
-    color: red;
+    color: rgb(178, 15, 15);
 }
 
 tbody .edit-icon{
-    color: green;
+    color: #06706a;
 
 }
 
@@ -83,6 +92,12 @@ tbody .edit-icon{
     transform: scale(0.97);
 }
 
+.container-opacity{
+    opacity: 0.5;
+}
+
+/* Interface add user*/
+
 .add-form{
     font-family: 'Inter-Tight';
     max-width: 500px;
@@ -92,13 +107,14 @@ tbody .edit-icon{
     border-radius: 7px;
     font-size: 13px;
     font-style: italic;
+    animation: zoom 2s alternate;
 }
 
 .add-form .add-user-section{
     width: 100%;
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    margin: 20px 0;
     position: relative;
 }
 
@@ -116,25 +132,113 @@ tbody .edit-icon{
     text-align: center;
 }
 
+
+
 .add-form .add-user-section input,
 .add-form .add-user-section select{
     height: 30px;
     flex: 1;
     outline: none;
-    border-radius: 17px;
     border: 1px;
     padding: 3px 20px 3px 50px;
     margin-right: 20px;
 }
 
+.add-form .add-user-section select{
+    height: 35px;
+}
+
+.add-form .add-user-section input:focus,
+.add-form .add-user-section select:focus{
+    border: 1px solid #06706a;
+}
+
 .add-form button{
+    margin: 0 auto;
     margin-top: 20px;
 }
 
-.page-interface{
-    opacity: 0.4;
+@keyframes zoom {
+    0% {
+        transform: scale(0.3);
+    }
+
+    95% {
+        transform: scale(1.06);
+    }
+
+    100%{
+        transform: scale(1);
+    }
 }
 
-.container-interface{
-    opacity: 1;
+/* Interface update user*/
+
+
+.update-user, .user-updated{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    column-gap: 20px;
+    max-width: 440px;
+    box-shadow: inset 0 0 3px #06706a;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.update-user{
+    animation: come-in-right 3s alternate;
+}
+
+.user-updated{
+    animation: go-on-left 3s alternate;
+}
+
+.update-user input,
+.update-user select
+{
+    width: 40%;
+    height: 15px;
+    outline: none;
+    border: none;
+    font-size: 11px;
+    font-style: italic;
+    font-weight: 500;
+    padding: 10px;
+    transition: all .3s;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.update-user select{
+    height: 35px;
+    width: 44%;
+}
+
+.update-user input:focus,
+.update-user select:focus{
+    border: 1px solid #06706a;
+}
+.update-user button{
+    margin-top: 8px;
+    height: 30px;
+}
+
+@keyframes come-in-right {
+    from{
+        transform: translateX(1000px);
+    }
+    to{
+        transform: translateX(0px);
+    }
+}
+
+
+@keyframes go-on-left {
+    from{
+        transform: translateX(0px);
+    }
+    to{
+        transform: translateX(-1000px);
+    }
 }
