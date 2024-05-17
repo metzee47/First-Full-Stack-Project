@@ -4,7 +4,7 @@ import { SignUpForm } from './pages/Authentification/SignUpForm';
 import './App.css';
 import { SuperAdmin } from './pages/SuperAdmin/SuperAdmin';
 import { useState } from 'react';
-import { RenderAllUsers, AddNewUser } from './pages/SuperAdmin/Render/Render';
+import { AllUsers, AddUser } from './pages/SuperAdmin/Render/Users';
 import { Error} from './pages/Error'
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
         <Route path='/sign-up' element={<SignUpForm/>}/>
         <Route path='/' element={<LoginForm setLogin={setLogin}/>}/> 
         <Route element={<SuperAdmin login={login}/>}>
-          <Route path='/superadmin/users' element ={<RenderAllUsers/>}/>        
-          <Route path='/superadmin/users/new-user' element ={<AddNewUser/>}/>  
+          <Route path='/superadmin/users' element ={<AllUsers/>}/>        
+          <Route path='/superadmin/users/new-user' element ={<AddUser/>}/>  
         </Route>
         <Route path='/*' element={<Error/>}/>     
         

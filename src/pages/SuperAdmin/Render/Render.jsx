@@ -16,7 +16,7 @@ import { useRef } from "react";
 
 
 
-export function RenderAllUsers({addButton,indexDb, inputValues, setInputValues, path, hidePassword,handleClick}){
+function RenderAll({addButton,indexDb, inputValues, setInputValues, path, hidePassword, showPassword, setShowPassword}){
 
 
     const [userData, setUserData] = useState([])
@@ -24,40 +24,28 @@ export function RenderAllUsers({addButton,indexDb, inputValues, setInputValues, 
 
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        fetch(`http://localhost:8080/${path}`)
-        .then(res => res.json())
-        .then(data => {
-            setUserData(data)
-        })
-        .catch(err => console.error('Error:', err));
-    }, [])
-
-    // delete user
-    /*
-    const handleDelete = () =>{
-
-        axios.delete(`http://localhost:8080/superadmin/users`,{
-            params: {
-                id:currentId
-            }
-        })
-          .then(res => res)
-          .catch(err => console.log(err))
-    }
-
-    */
-
-    const handleDelete = async (id) => {
-
-        try {
-          const response = await axios.delete(`http://localhost:8080/superadmin/${path}/${id}`)
-            fetch(`http://localhost:8080/${path}`)
+    // get users, products, fournisseurs, vente or achat infos from backend
+    const getInfos = () =>{
+        fetch(`http://localhost:5050/${path}`)
                 .then(res => res.json())
                 .then(data => {
                     setUserData(data)
                 })
-                .catch(err => console.error('Error:', err));
+        .catch(err => console.error('Error:', err));
+    }
+
+    // load users infos from database
+    useEffect(()=>{
+        getInfos()
+    }, [])
+
+
+    // delete a user from the db
+    const handleDelete = async (id) => {
+
+        try {
+          const response = await axios.delete(`http://localhost:5050/superadmin/${path}/${id}`)
+            getInfos()
             return response.data
         } catch (error) {
           console.error('Erreur lors de la suppression des données:', error)
@@ -66,7 +54,7 @@ export function RenderAllUsers({addButton,indexDb, inputValues, setInputValues, 
 
     
 
-
+    // set user infos
 
     const handleUpdate = (e) => {
 
@@ -75,13 +63,32 @@ export function RenderAllUsers({addButton,indexDb, inputValues, setInputValues, 
             setShowUpdate(false)
             containerRef.current.className = 'opacity'
         }, 2000)
-        /*
-        axios.put(`http://localhost:8080/superadmin/users/update-${inputValues.id}`, inputValues)
-        .then(res => res)           
+        
+        axios.put(`http://localhost:5050/superadmin/users/update-${inputValues.id}`, inputValues)
+        .then(res => {
+            getInfos()
+            return res
+        })           
         .catch (error => console.log('Erreur lors de la modification des données:', error)) 
-        */    
+          
         
     } 
+
+    // get all infos of user in the update champs
+    const handleClick = (id) => {
+
+        const get = userData.filter(user => user.id_User == id)[0]
+        setInputValues(inputValues => ({...inputValues, 
+            ['id']: get.id_User, 
+            ['name']: get.nom_User, 
+            ['prename']: get.prenom_User, 
+            ['tel']: get.tel_User, 
+            ['email']: get.login_User, 
+            ['password']: get.password_User, 
+            ['usertype']: get.type_User, 
+            ['note']: get.note_User                                     
+        }))
+    }
 
     
 
@@ -91,14 +98,23 @@ export function RenderAllUsers({addButton,indexDb, inputValues, setInputValues, 
     return(   
         <div className="container">
             <div className="opacity" ref={containerRef}>
-                <button
-                    type="button" 
-                    className="add-user" 
-                    onClick={()=> {
-                        navigate('/superadmin/users/new-user')
-                        }}>
-                    <MdAdd/>{addButton}
-                </button>
+                <section className="before-table">
+                    <button
+                        type="button" 
+                        className="add-user" 
+                        onClick={()=> {
+                            navigate('/superadmin/users/new-user')
+                            }}>
+                        <MdAdd/>{addButton}
+                    </button>
+
+                    <select name="sort" id="sort" className="sort-by">
+                        <option value="Id User">Id User</option>
+                        <option value="Login User">Login User</option>
+                        <option value="Type User">Type User</option>
+
+                    </select>
+                </section>
                 <table >
                     <thead>
                         <tr>
@@ -224,19 +240,8 @@ export function RenderAllUsers({addButton,indexDb, inputValues, setInputValues, 
 }
 
 
-export function AddNewUser(){  
-    
-    const [inputValues, setInputValues] = useState(
-        {
-            name: '',
-            prename: '',
-            tel: '',
-            email: '',
-            password: '',
-            usertype: 'User',
-        }
-    )
-
+function AddNew({inputValues, setInputValues, path, subPath}){  
+        
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -255,9 +260,9 @@ export function AddNewUser(){
         }
 
         if(checkIsValid()){
-            axios.post('http://localhost:8080/superadmin/users/new-user', inputValues)
+            axios.post(`http://localhost:5050/superadmin/${path}`, inputValues)
                 .then(res => {
-                    navigate('/superadmin/users')
+                    navigate(`/superadmin/${subPath}`)
                     return res
                 })
                 .catch(err => console.log(err))     
@@ -267,20 +272,7 @@ export function AddNewUser(){
 
     return (
         <div className="add-user-container">
-            <Add_UpInterface 
-                handleSubmit={handleSubmit} 
-                button='Add user' 
-                inputValues={inputValues} 
-                setInputValues={setInputValues}/>
-        </div>
-    ) 
-}
-
-
-function Add_UpInterface({handleSubmit,button, inputValues, setInputValues}){
-
-    return (
-        <div className="container">
+            <div className="container">
                 <form method="POST" className="add-form" onSubmit={handleSubmit}>
                     <div className="add-user-section">
                         <label htmlFor="nom">Nom</label>
@@ -371,13 +363,15 @@ function Add_UpInterface({handleSubmit,button, inputValues, setInputValues}){
                     <button 
                         type="submit" 
                         className="add-user-button">
-                    {button}
+                        Ajouter
                     </button>
                     
         
                 </form>
             </div>
-    )
+        </div>
+    ) 
 }
 
 
+export {AddNew, RenderAll}

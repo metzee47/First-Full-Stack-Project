@@ -190,10 +190,6 @@ tbody .edit-icon{
     animation: come-in-right 3s alternate;
 }
 
-.user-updated{
-    animation: go-on-left 3s alternate;
-}
-
 .update-user input,
 .update-user select
 {

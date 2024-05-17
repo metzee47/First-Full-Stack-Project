@@ -1,4 +1,5 @@
-import { RenderAllUsers } from "./Render"
+import { useState } from "react"
+import { AddNew, RenderAll } from "./Render"
 
 export function AllUsers(){
 
@@ -26,32 +27,42 @@ export function AllUsers(){
         return password
     }
 
-    const handleClick = (id) => {
-
-        const get = userData.filter(user => user.id_User == id)[0]
-        setInputValues(inputValues => ({...inputValues, 
-            ['id']: get.id_User, 
-            ['name']: get.nom_User, 
-            ['prename']: get.prenom_User, 
-            ['tel']: get.tel_User, 
-            ['email']: get.login_User, 
-            ['password']: get.password_User, 
-            ['usertype']: get.type_User, 
-            ['note']: get.note_User                                     
-        }))
-    }
-
 
     return(
-        <RenderAllUsers 
+        <RenderAll
             indexDb={index} 
             inputValues={inputValues} 
-            setInputValues={setInputValues} 
+            setInputValues={setInputValues}
             showPassword={showPassword} 
             setShowPassword={setShowPassword}
             addButton={'Add user'}
             path={'users'}
             hidePassword={hidePassword}
-            handleClick={handleClick}/>
+            />
+    )
+}
+
+
+export function AddUser(){
+
+    const [inputValues, setInputValues] = useState(
+        {
+            id: undefined,
+            name: '',
+            prename: '',
+            tel: '',
+            email: '',
+            password: '',
+            note_User: '',
+            usertype: 'User',
+        }
+    )
+
+    return (
+        <AddNew 
+            inputValues={inputValues} 
+            setInputValues = {setInputValues}
+            path={'/users/new-user'} 
+            subPath={'/users'}/>
     )
 }
