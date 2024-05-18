@@ -6,6 +6,7 @@ import { SuperAdmin } from './pages/SuperAdmin/SuperAdmin';
 import { useState } from 'react';
 import { AllUsers, AddUser } from './pages/SuperAdmin/Render/Users';
 import { Error} from './pages/Error'
+import { AllProducts } from './pages/SuperAdmin/Render/Products';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route element={<SuperAdmin login={login}/>}>
           <Route path='/superadmin/users' element ={<AllUsers/>}/>        
           <Route path='/superadmin/users/new-user' element ={<AddUser/>}/>  
+          <Route path='/superadmin/products' element ={<AllProducts/>}/>
         </Route>
         <Route path='/*' element={<Error/>}/>     
         

@@ -4,7 +4,7 @@
 .container{
     z-index: -100;
     font-family: 'Inter-Tight';
-    padding: 60px 0 20px 95px;
+    padding: 60px 15px 20px 95px;
 }
 
 td{
@@ -93,25 +93,53 @@ tbody .edit-icon{
 }
 
 .container-opacity{
-    opacity: 0.5;
+    opacity: 0.1;
+    z-index: -100;
+}
+
+section.before-table{
+    display: flex;
+    justify-content: space-between;
+}
+
+.before-table .sort-by span{
+    font-style: italic;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.before-table .sort-by select{
+    font-style: italic;
+    font-size: 12px;
+    border: 1px solid #06706b5a;
+    color: #06706a;
+    box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.6);
+    width: 100px;
+    padding: 5px 10px;   
+    outline: none; 
 }
 
 /* Interface add user*/
 
 .add-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     font-family: 'Inter-Tight';
-    max-width: 500px;
+    max-width: 800px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     margin: 20px auto;
-    padding: 20px 30px;
+    padding: 30px;
     border-radius: 7px;
     font-size: 13px;
     font-style: italic;
     animation: zoom 2s alternate;
+    background-color: #06706bce;
+    box-shadow: inset 0 0 13px rgba(0, 0, 0, 0.6);
 }
 
 .add-form .add-user-section{
-    width: 100%;
+    width: 50%;
     display: flex;
     align-items: center;
     margin: 20px 0;
@@ -127,9 +155,14 @@ tbody .edit-icon{
 
 .add-form .add-user-section label{
     display: inline-block;
-    width: 100px;
+    width: 70px;
     margin-right: 40px;
     text-align: center;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: bold;
+    color: aliceblue;
+    text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.9);
 }
 
 
@@ -140,7 +173,7 @@ tbody .edit-icon{
     flex: 1;
     outline: none;
     border: 1px;
-    padding: 3px 20px 3px 50px;
+    padding: 3px 20px;
     margin-right: 20px;
 }
 
@@ -150,12 +183,20 @@ tbody .edit-icon{
 
 .add-form .add-user-section input:focus,
 .add-form .add-user-section select:focus{
-    border: 1px solid #06706a;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: aliceblue;
 }
 
 .add-form button{
     margin: 0 auto;
     margin-top: 20px;
+    font-weight: bold;
+}
+
+.add-form button:hover{
+    background-color: aliceblue;
+    color: #06706a;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
 @keyframes zoom {
@@ -175,66 +216,69 @@ tbody .edit-icon{
 /* Interface update user*/
 
 
-.update-user, .user-updated{
+.update-user{
     display: flex;
     flex-wrap: wrap;
-    align-content: space-between;
-    column-gap: 20px;
+    justify-content: space-between;
     max-width: 440px;
-    box-shadow: inset 0 0 3px #06706a;
+    box-shadow: inset 0 0 7px #06706a;
     margin: 0 auto;
+    margin-top: -80px;
     padding: 20px;
+    border-radius: 6px;
+    animation: come-in-right 3s alternate;
+    background-color: #06706bce;
+    box-shadow: inset 0 0 13px rgba(0, 0, 0, 0.6);
+    z-index: 100;
 }
 
-.update-user{
-    animation: come-in-right 3s alternate;
-}
+
 
 .update-user input,
 .update-user select
 {
-    width: 40%;
+    width: 45%;
     height: 15px;
     outline: none;
     border: none;
-    font-size: 11px;
+    font-size: 12px;
     font-style: italic;
     font-weight: 500;
-    padding: 10px;
+    padding: 8px;
     transition: all .3s;
     margin-top: 5px;
     margin-bottom: 20px;
+
 }
 
 .update-user select{
-    height: 35px;
-    width: 44%;
+    height: 31px;
+    width: 49%;
 }
 
 .update-user input:focus,
 .update-user select:focus{
-    border: 1px solid #06706a;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: aliceblue;
 }
 .update-user button{
     margin-top: 8px;
     height: 30px;
 }
 
+.update-user button:hover{
+    background-color: aliceblue;
+    color: #06706a;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
 @keyframes come-in-right {
     from{
-        transform: translateX(1000px);
+        transform: translateY(1000px);
     }
     to{
-        transform: translateX(0px);
+        transform: translateY(0px);
     }
 }
 
 
-@keyframes go-on-left {
-    from{
-        transform: translateX(0px);
-    }
-    to{
-        transform: translateX(-1000px);
-    }
-}

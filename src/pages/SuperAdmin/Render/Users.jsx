@@ -3,21 +3,21 @@ import { AddNew, RenderAll } from "./Render"
 
 export function AllUsers(){
 
-    const index = ['Id user', 'Login user', 'Nom user', 'Prenom user', 'Telephone user', 'Password user', 'Type User', 'Note user']
-
+    const tableTitles = ['Id user', 'Login user', 'Nom user', 'Prenom user', 'Telephone user', 'Password user', 'Type User', 'Note user']
+    const indexDb = ['id_User', 'login_User', 'nom_User', 'prenom_User', 'tel_User', 'password_User', 'type_User', 'note_User']
     //show or hide password 
     const [showPassword, setShowPassword] = useState(false)
 
     const [inputValues, setInputValues] = useState(
         {
             id: undefined,
-            name: '',
-            prename: '',
-            tel: '',
             email: '',
+            nom: '',
+            prenom: '',
+            telephone: '',
             password: '',
-            note_User: '',
             usertype: 'User',
+            note: '',
         }
     )
 
@@ -27,17 +27,24 @@ export function AllUsers(){
         return password
     }
 
+    const inputKeys = Object.keys(inputValues)
+
+    
 
     return(
         <RenderAll
-            indexDb={index} 
+            titles={tableTitles} 
+            indexDb={indexDb}
             inputValues={inputValues} 
             setInputValues={setInputValues}
+            inputKeys={inputKeys}
             showPassword={showPassword} 
             setShowPassword={setShowPassword}
             addButton={'Add user'}
             path={'users'}
             hidePassword={hidePassword}
+            subPath={'users/new-user'}
+            
             />
     )
 }
@@ -48,21 +55,26 @@ export function AddUser(){
     const [inputValues, setInputValues] = useState(
         {
             id: undefined,
-            name: '',
-            prename: '',
-            tel: '',
+            nom: '',
+            prenom: '',
+            telephone: '',
             email: '',
             password: '',
-            note_User: '',
+            note: '',
             usertype: 'User',
         }
     )
+
+    const inputKeys = Object.keys(inputValues)
+
 
     return (
         <AddNew 
             inputValues={inputValues} 
             setInputValues = {setInputValues}
-            path={'/users/new-user'} 
-            subPath={'/users'}/>
+            path={'users/new-user'} 
+            subPath={'users'}
+            button={'Add user'}
+            inputKeys={inputKeys}/>
     )
 }

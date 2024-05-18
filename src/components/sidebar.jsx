@@ -8,7 +8,7 @@ import { FaHospitalUser } from "react-icons/fa6";
 import { AiFillProduct } from "react-icons/ai";
 import { MdSell } from "react-icons/md";
 import { BiCartAlt } from "react-icons/bi";
-import { userRef } from "react";
+//import { userRef } from "react";
 
 
 export function Sidebar(){
@@ -32,7 +32,10 @@ export function Sidebar(){
                         <span>Users</span>
             </div>
 
-            <div className="icon-tag">
+            <div className="icon-tag"
+                onClick={(e)=> {
+                navigate('/superadmin/products')}
+                }>
                 <AiFillProduct className="icon"/>
                 <span>Produits</span>
             </div>
